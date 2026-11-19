@@ -1,9 +1,0 @@
-# 논문 결과를 만들고 확인한 환경 (Python 3.13). 같은 값을 그대로 재현하려면:  pip install -r requirements-tested.txt
-# 다른 버전에서도 대부분 같은 결과가 나오지만, 난수를 쓰는 값은 소폭 달라질 수 있습니다.
-numpy==2.5.3
-pandas==3.0.5
-scipy==1.18.1
-networkx==3.7
-openpyxl==3.1.5
-matplotlib==3.11.2
-pillow==12.3.0
