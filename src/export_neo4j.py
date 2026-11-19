@@ -25,6 +25,6 @@ rt[["route", "mode", "n_stops", "peak_share"]].to_csv(os.path.join(a.neo4j_dir, 
 pairs.to_csv(os.path.join(a.neo4j_dir, "passes.csv"), index=False)
 import shutil
 shutil.copy(os.path.join(a.out_dir, "hufs_stops.json"), os.path.join(a.neo4j_dir, "hufs_stops.json"))
-S = json.load(open(os.path.join(a.out_dir, "stats.json")))
+S = json.load(open(os.path.join(a.out_dir, "stats.json"), encoding="utf-8"))
 q = S["queries"]
 print("expected:", q)

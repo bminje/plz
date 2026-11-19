@@ -323,7 +323,7 @@ qres["q2_graph"] = sum(1 for d in deg_stop.values() if d >= 10)
 qres["q2_table"] = int((rc >= 10).sum())
 # Q6: multi-hop reachability from the stops within 300 m of HUFS
 hufs_ids = list(uids["한국외국어대학교"])
-json.dump([str(x) for x in hufs_ids], open(OUT + "hufs_stops.json", "w"))
+json.dump([str(x) for x in hufs_ids], open(OUT + "hufs_stops.json", "w", encoding="utf-8"))
 src = [("S", s) for s in hufs_ids]
 dist_g = nx.multi_source_dijkstra_path_length(bip, src, cutoff=4)
 reach0 = {n_[1] for n_, d_ in dist_g.items() if n_[0] == "S" and d_ <= 2}   # one ride (no transfer)
@@ -427,5 +427,5 @@ for ax in axs:
     ax.spines[["top", "right"]].set_visible(False)
 plt.tight_layout(); plt.savefig(OUT + "fig_s5_degree.png", dpi=200); plt.close()
 
-json.dump(S, open(OUT + "stats.json", "w"), ensure_ascii=False, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))
+json.dump(S, open(OUT + "stats.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))
 print("done; stops with coordinates:", S["stops_with_xy"], "of", S["stops"])

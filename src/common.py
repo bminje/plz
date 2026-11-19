@@ -46,4 +46,11 @@ def load_stops(path: str) -> pd.DataFrame:
 
 
 def resolve(data_dir: str, key: str) -> str:
-    return os.path.join(data_dir, DATA_FILES[key])
+    path = os.path.join(data_dir, DATA_FILES[key])
+    if not os.path.exists(path):
+        raise SystemExit(
+            f"[입력 파일 없음] {path}\n"
+            f"  '{DATA_FILES[key]}' 파일을 data 폴더에 두어야 합니다. 자세한 내용은 data/README.md 를 보세요.\n"
+            f"  (다른 폴더에 두었다면 --data-dir 로 지정)\n"
+            f"  Input file not found: put '{DATA_FILES[key]}' into the data folder (see data/README.md).")
+    return path
